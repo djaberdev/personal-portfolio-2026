@@ -1,8 +1,22 @@
+import { 
 
+    Page,
+
+    Hero,
+    Projects,
+    About,
+    Contact
+
+} from "./sections";
 
 const App = () => {
     return (
-        <div>App</div>
+        <Page>
+            <Hero />
+            <Projects />
+            <About />
+            <Contact />
+        </Page>
     )
 }
 
