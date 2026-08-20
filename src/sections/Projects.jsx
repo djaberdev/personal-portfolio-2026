@@ -20,68 +20,70 @@ const Projects = () => {
     // Sicky Cards on Scroll Animation
     const sectionRef = useRef(null);
 
-    // useGSAP(() => {
+    let cardsRef = useRef([]);
 
-    //     cardsRef.current = Array.from(document.querySelectorAll(".project-card"));
+    useGSAP(() => {
 
-    //     // Initial Stack
-    //     cardsRef.current.forEach((card, index) => {
+        cardsRef.current = Array.from(document.querySelectorAll(".project-card"));
 
-    //         gsap.set(card, {
+        // Initial Stack
+        cardsRef.current.forEach((card, index) => {
 
-    //             y: index * 30,
-    //             scale: 1 - index * 0.05,
-    //             zIndex: projects.length - index,
-    //             transformOrigin: "center center"
+            gsap.set(card, {
 
-    //         });
+                y: index * 30,
+                scale: 1 - index * 0.05,
+                zIndex: projects.length - index,
+                transformOrigin: "center center"
 
-    //     });
+            });
 
-    //     // Timeline
-    //     const tl = gsap.timeline({
+        });
 
-    //         scrollTrigger: {
-    //             trigger: sectionRef.current,
-    //             start: "center 47%",
-    //             end: `+=${projects.length * 860}`,
-    //             pin: true,
-    //             pinSpacing: true,
-    //             scrub: 2,
-    //         },
+        // Timeline
+        const tl = gsap.timeline({
 
-    //     });
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "center 47%",
+                end: `+=${projects.length * 860}`,
+                pin: true,
+                pinSpacing: true,
+                scrub: 2,
+            },
 
-    //     projects.forEach((_, index) => {
+        });
 
-    //         if (index === projects.length - 1) return;
+        projects.forEach((_, index) => {
 
-    //         // Current Card Leaves
-    //         tl.to(cardsRef.current[index], {
-    //             yPercent: -150,
-    //             rotation: -6,
+            if (index === projects.length - 1) return;
+
+            // Current Card Leaves
+            tl.to(cardsRef.current[index], {
+                yPercent: -150,
+                rotation: -6,
                 
-    //             // opacity: 0,
+                // opacity: 0,
 
-    //             duration: 1,
-    //             ease: "expo.inOut"
-    //         });
+                duration: 1,
+                ease: "expo.inOut"
+            });
 
-    //         // Remaining Cards Move Forward
-    //         for (let i = index + 1; i < projects.length; i++) {
+            // Remaining Cards Move Forward
+            for (let i = index + 1; i < projects.length; i++) {
 
-    //             tl.to(cardsRef.current[i], {
-    //                 y: (i - (index + 1)) * 45,
-    //                 scale: 1 - (i - (index + 1)) * 0.05,
-    //                 duration: 1,
-    //                 ease: "expo.inOut"
-    //             }, "<");
+                tl.to(cardsRef.current[i], {
+                    y: (i - (index + 1)) * 45,
+                    scale: 1 - (i - (index + 1)) * 0.05,
+                    duration: 1,
+                    ease: "expo.inOut"
+                }, "<");
 
-    //         }
+            }
 
-    //     });
+        });
 
-    // }, []);
+    }, []);
 
     return (
         <Element name="projects">
@@ -94,7 +96,8 @@ const Projects = () => {
                 />
 
                 {/* Projects Cards */}
-                <div ref={sectionRef} className="flex-col-center gap-6">
+                {/* <div ref={sectionRef} className="flex-col-center gap-6 -mt-62"> */}
+                <div ref={sectionRef} className="relative h-screen flex-center-all -mt-50">
 
                     {projects.map((project, index) => (
 

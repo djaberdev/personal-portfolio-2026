@@ -69,7 +69,7 @@ const ProjectCard = ({ projectObj }) => {
         
         <div
             key={projectObj.id}
-            className="project-card relative w-[80vw] max-w-6xl h-[80vh] rounded-3xl shadow-2xl overflow-hidden p-8 max-md:p-6"
+            className="project-card absolute w-[80vw] max-w-6xl h-[80vh] rounded-3xl shadow-2xl overflow-hidden p-8 max-md:p-6"
             style={{ backgroundColor: projectObj.darkBGColor }}
             onMouseEnter={() => setIsCardHovered(true)}
             onMouseLeave={() => setIsCardHovered(false)}

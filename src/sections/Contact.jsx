@@ -87,7 +87,13 @@ const Contact = () => {
                     {/* Actual CTA */}
                     <CoreCTA
                         hoverCount={6}
-                        clickCount={14}
+                        clickCount={12}
+                        onClick={() => {
+                            window.scrollTo({
+                                top: document.body.scrollHeight,
+                                behavior: 'smooth'
+                            })
+                        }}
                     >
                         Start Project
                     </CoreCTA>
